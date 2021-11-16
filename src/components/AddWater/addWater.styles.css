@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.counter-container {
+  display: grid;
+  width: 450px;
+  justify-content: center;
+}
+.counter-container .water-counter {
+  font-size: 8rem;
+  display: flex;
+  justify-content: center;
+  margin: 8rem 0;
+}
+.counter-container .water-counter.red {
+  color: #de1738;
+}
+.red {
+  color: #de1738;
+}
+.counter-container h3 {
+  font-size: 2rem;
+  margin: 3rem 0;
+}
+
+.counter-container button {
+  width: 250px;
+  margin: auto;
+  padding: 1rem 0.75rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
