@@ -3,11 +3,11 @@ import "./App.css";
 import TheHeader from "./components/TheHeader/TheHeader.component";
 import AddWater from "./components/AddWater/addWater.component";
 import Info from "./components/Info/Info.component";
+import Clock from "react-live-clock";
 const App = () => {
   const [waterCups, setWaterCups] = useState(0);
   const [waterWithSyrup, setWaterWithSyrup] = useState(0);
   const [counter, setCounter] = useState(0);
-
   useEffect(() => {
     localStorage.setItem("Simple Water", waterCups);
     localStorage.setItem("Syrup Water", waterWithSyrup);
@@ -22,6 +22,19 @@ const App = () => {
     setCounter(localcounter);
     //eslint-disable-next-line
   }, []);
+
+  const clockChangeHandler = (date) => {
+    const dateNow = new Date(Date.now()).toLocaleString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+    if (dateNow === "06:00:00 AM") {
+      setWaterCups(0);
+      setWaterWithSyrup(0);
+      setCounter(0);
+    }
+  };
 
   const waterCupHandler = () => {
     setWaterCups(waterCups + 1);
@@ -39,6 +52,13 @@ const App = () => {
   return (
     <React.Fragment>
       <TheHeader></TheHeader>
+      <Clock
+        className="hidden"
+        format={"h:mm:ssa"}
+        style={{ fontSize: "1.5em" }}
+        ticking={true}
+        onChange={(date) => clockChangeHandler(date)}
+      />
       <AddWater
         waterCupHandler={waterCupHandler}
         waterWithSyrup={waterWithSyrup}
