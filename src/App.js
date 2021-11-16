@@ -3,7 +3,7 @@ import "./App.css";
 import TheHeader from "./components/TheHeader/TheHeader.component";
 import AddWater from "./components/AddWater/addWater.component";
 import Info from "./components/Info/Info.component";
-function App() {
+const App = () => {
   const [waterCups, setWaterCups] = useState(0);
   const [waterWithSyrup, setWaterWithSyrup] = useState(0);
   const [counter, setCounter] = useState(0);
@@ -16,11 +16,11 @@ function App() {
   const simple = +localStorage.getItem("Simple Water");
   const syrup = +localStorage.getItem("Syrup Water");
   const localcounter = +localStorage.getItem("Counter");
-  console.log(simple, syrup);
   useEffect(() => {
     setWaterCups(simple);
     setWaterWithSyrup(syrup);
     setCounter(localcounter);
+    //eslint-disable-next-line
   }, []);
 
   const waterCupHandler = () => {
@@ -49,6 +49,6 @@ function App() {
       <Info waterWithSyrup={waterWithSyrup} waterCups={waterCups}></Info>
     </React.Fragment>
   );
-}
+};
 
 export default App;
